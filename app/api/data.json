@@ -3,17 +3,17 @@
     {
       "id": 0,
       "title": "Comments",
-      "description": "Comments can be used to explain javascript code. comments will be ignored by the interpreter",
+      "description": "• Comments can be used to explain javascript code.\n• It will be ignored by the interpreter.\n• Comments are writtern with code for others and ourselves to understand it easily.",
       "examples": [
         {
           "title": "Single-Line Comments",
-          "code": "// This is a single line comments",
-          "description": "Single line comments can be written at the end of line of a code."
+          "code": "// This is a single line comments\n// Declaring a variable x and assign 4 to it\nlet x = 4",
+          "description": "• Single line comments can be written at the end of line of a code.\n• \"//\" will turn the text after it as comments."
         },
         {
           "title": "Multi-Line Comments",
-          "code": "/*\nThis is \nMultiple line\nComment \n*/",
-          "description": "• Multi-line comments used to write documentation.\n• /* is the start of the comment and */ is the end of the comment"
+          "code": "/*\nThis is function will take two value \nand add them together and \nprint the answer \n*/\nfunction(a, b) {\n    sum = a + b\n    console.log(sum)\n }",
+          "description": "• Multi-line comments used to write documentation.\n• /* is the start of the comment and */ is the end of the comment."
         }
       ]
     },

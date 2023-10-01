@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     {
       rel: "icon",
       type: 'image/png',
-      url: '/favicon-16x16.png'
+      url: '/logo.png'
     }
   ],
 }
