@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "./loadingSpinner";
-import Navbar from "./navbar";
 
 type ChapterList = Array<{ id: number; name: string }>;
 

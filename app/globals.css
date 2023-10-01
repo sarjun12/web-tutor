@@ -34,8 +34,8 @@ body {
   width:90px;
   height:14px;
   background: 
-    conic-gradient(from 135deg at top   ,#fff 90deg,#0000 0) 0 0,
-    conic-gradient(from -45deg at bottom,#fff 90deg,#0000 0) 0 100%;
+    conic-gradient(from 135deg at top   , #d1d5db 90deg,#0000 0) 0 0,
+    conic-gradient(from -45deg at bottom, #d1d5db 90deg,#0000 0) 0 100%;
   background-size:calc(100%/4) 50%;
   background-repeat:repeat-x;
   animation:i2 1s infinite;

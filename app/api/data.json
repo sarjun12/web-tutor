@@ -75,6 +75,21 @@
           "title": "Camel Case",
           "description": "It's a common convention to use camel case for variable and function names in JavaScript. In camel case, the first word starts with a lowercase letter, and subsequent words are capitalized",
           "code": "const myAge = 18\nlet calculateTotalAmount = 10"
+        },
+        {
+          "title": "Pascal Case",
+          "description": "Pascal case is similar to camel case, but it starts with a capital letter. Commonly used for naming classes, constructors, or types.",
+          "code": "class Person { }\nclass CarModel { }"
+        },
+        {
+          "title": "Snake Case",
+          "description": "• Snake case is used for naming files and used to naming variable is some language like rust, python.\n•In snake case, words are separated by underscores (_) and all letters are typically lowercase.",
+          "code": "let max_value\nmy_module.js"
+        },
+        {
+          "title": "Kebab Case",
+          "description": "• Kebab case is similar to snake case, but words are separated by hyphens (-).\n• Often used in URLs and some web development contexts.",
+          "code": "page-title, css-style-sheet"
         }
       ]
     }

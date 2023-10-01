@@ -33,14 +33,14 @@ export default function Page({ params }: { params: { slug: string } }) {
   if (!chapter) return <p>Something went wrong</p>;
   return (
     <>
-    <div className="w-screen min-h-screen flex flex-col p-4 pt-0 pb-3">
+    <div className="min-h-screen w-full flex flex-col p-4 pt-0 pb-3">
       <Navbar />
       <div className=" flex flex-col font-pixel leading-7 justify-between grow">
         <div className="flex flex-col gap-3 border-b-gray-600 border-b-2 border-dashed grow pt-5 pb-8">
-          <span className="text-3xl font-pixel font-semibold leading-10 text-gray-200">
+          <span className="text-3xl font-pixel font-semibold leading-10 text-gray-300">
             {chapter.title}
           </span>
-          <pre className="font-pixel font-light text-xl overflow-x-auto whitespace-pre-wrap break-words text-gray-400">
+          <pre className="font-pixel font-light text-xl overflow-x-auto whitespace-pre-wrap break-words text-gray-400 p-1">
             {chapter.description}
           </pre>
           <div className="flex flex-col gap-5">
@@ -49,7 +49,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             ))}
           </div>
         </div>
-        <div className="flex flex-row justify-between pt-3">
+        <div className="flex flex-row justify-between pt-2">
           <div>
             {chapter.prevTitle !== "" && (
               <a
@@ -100,12 +100,12 @@ function Example(props: { example: Example }) {
         {props.example.title}
       </span>
       {props.example.code && (
-        <pre className="p-4 bg-white bg-opacity-10 rounded-sm text-md font-pixel text-xl text-gray-300">
+        <pre className="p-4 bg-gray-400 bg-opacity-10 rounded-sm text-md font-pixel text-xl text-gray-300">
           {props.example.code}
         </pre>
       )}
       {props.example.description && (
-        <pre className="overflow-x-auto whitespace-pre-wrap break-words text-gray-400 font-pixel text-xl">
+        <pre className="overflow-x-auto whitespace-pre-wrap break-words text-gray-400 font-pixel text-xl p-1">
           {props.example.description}
         </pre>
       )}
