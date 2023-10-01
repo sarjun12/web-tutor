@@ -45,19 +45,36 @@
       "description": "JavaScript identifiers are names used to identify variables, functions, objects, or any other constructs within a JavaScript program.",
       "examples": [
         {
-          "title": "1. Rules for Identifiers",
-          "description": "• Identifiers must begin with a letter (a-z, A-Z), an underscore (_), or a dollar sign ($).\n• After the first character, identifiers can also contain digits (0-9).\n• Identifiers are case-sensitive, meaning 'myVariable' and 'myvariable' are considered different.",
+          "title": "Rules for Identifiers",
+          "description": "1. Identifiers must begin with a letter (a-z, A-Z), an underscore (_), or a dollar sign ($).\n2. After the first character, identifiers can also contain digits (0-9).\n3. Identifiers are case-sensitive, meaning 'myVariable' and 'myvariable' are considered different.",
           "code": ""
         },
         {
-          "title": "2. Valid Examples",
+          "title": "Valid Examples",
           "code": "let myVariable\nlet _privateVar\nlet $specialVar\nlet firstName\nlet calculateSum",
           "description": ""
         },
         {
-          "title": "3. Invalid Examples",
+          "title": "Invalid Examples",
           "code": "let 123var // starts with a digits\nlet my-variable // contains a hyphen\nlet my variable // contains a space",
           "description": ""
+        },
+        {
+          "title": "Keywords",
+          "description": "• We can't use javascript reversed words.\n• The reversed words are called keyword.\n• Example: `if`, `else`, `for`, `while`, and many more",
+          "code": "let for // invalid \nlet function // invalid"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Naming Conventions",
+      "description": "• Naming conventions are set of rules and guildelines used in programmming to define how identifiers should be named.\n• They are used to make the code more readable.\n• They are used to seperate words and use of specific prefixes or suffixes.",
+      "examples": [
+        {
+          "title": "Camel Case",
+          "description": "It's a common convention to use camel case for variable and function names in JavaScript. In camel case, the first word starts with a lowercase letter, and subsequent words are capitalized",
+          "code": "const myAge = 18\nlet calculateTotalAmount = 10"
         }
       ]
     }

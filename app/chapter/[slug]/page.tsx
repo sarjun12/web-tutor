@@ -26,7 +26,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   }, [params.slug]);
 
   if (isLoading) return (
-    <div>
+    <div className="h-screen w-screen p-4 pb-3 pt-0">
       <Navbar />
       <LoadingScreen />
     </div>
@@ -34,23 +34,23 @@ export default function Page({ params }: { params: { slug: string } }) {
   if (!chapter) return <p>Something went wrong</p>;
   return (
     <>
-    <div className="w-screen min-h-screen flex flex-col">
+    <div className="w-screen min-h-screen flex flex-col p-4 pt-0 pb-3">
       <Navbar />
       <div className=" flex flex-col font-pixel leading-7 justify-between grow">
-        <div className="flex flex-col gap-3 border-b-gray-600 p-8 border-b grow">
+        <div className="flex flex-col gap-3 border-b-gray-600 border-b-2 border-dashed grow pt-5 pb-8">
           <span className="text-3xl font-pixel font-semibold leading-10">
             {chapter.title}
           </span>
           <pre className="font-pixel font-light text-xl overflow-x-auto whitespace-pre-wrap break-words text-gray-400">
             {chapter.description}
           </pre>
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-5">
             {chapter.examples.map((example, key) => (
               <Example example={example} key={key} />
             ))}
           </div>
         </div>
-        <div className="flex flex-row justify-between p-3 pr-5 pl-5">
+        <div className="flex flex-row justify-between pt-3">
           <div>
             {chapter.prevTitle !== "" && (
               <a
