@@ -35,7 +35,7 @@ export default function Home() {
       <div className="flex flex-col gap-5">
         <span className="font-medium text-6xl text-gray-300">Web Tutor</span>
           <span className="text-gray-400 text-xl leading-7">
-            Web tutor covers basics of javascript with example.
+            Web tutor covers basics of javascript with example.&#160;
             <Link
               href="/chapter/comments"
               className="underline underline-offset-4 leading-7 text-purple-400 hover:text-slate-400"
