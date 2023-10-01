@@ -51,11 +51,13 @@
         },
         {
           "title": "2. Valid Examples",
-          "code": "let myVariable\nlet _privateVar\nlet $specialVar\nlet firstName\nlet calculateSum"
+          "code": "let myVariable\nlet _privateVar\nlet $specialVar\nlet firstName\nlet calculateSum",
+          "description": ""
         },
         {
           "title": "3. Invalid Examples",
-          "code": "let 123var // starts with a digits\nlet my-variable // contains a hyphen\nlet my variable // contains a space"
+          "code": "let 123var // starts with a digits\nlet my-variable // contains a hyphen\nlet my variable // contains a space",
+          "description": ""
         }
       ]
     }

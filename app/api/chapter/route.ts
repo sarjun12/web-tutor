@@ -17,8 +17,12 @@ export async function GET(request: Request) {
   if (id < data.chapters.length - 1) {
     nextTitle = data.chapters[id + 1].title;
   }
+  const currentChapter = data.chapters[id]
   const chapter: Chapter = {
-    ...data.chapters[id],
+    id: currentChapter.id,
+    description: currentChapter.description,
+    title: currentChapter.title,
+    examples: currentChapter.examples,
     nextTitle: nextTitle,
     prevTitle: prevTitle,
   };
