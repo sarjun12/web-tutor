@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import LoadingScreen from "./loading";
+import LoadingSpinner from "./loadingSpinner";
 import Navbar from "./navbar";
 
 type ChapterList = Array<{ id: number; name: string }>;
@@ -25,7 +25,11 @@ export default function Home() {
         setLoading(false);
       });
   }, []);
-  if (isLoading) return <LoadingScreen />
+  if (isLoading) return (
+    <div className="h-screen w-screen p-4 pb-3 pt-0 flex flex-col">
+      <LoadingSpinner />
+    </div>
+  )
   if (!chapterList) return <div>Something went wrong</div>;
   return (
     <main className="flex min-h-screen justify-center p-8 font-pixel">

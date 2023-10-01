@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import type { Chapter } from "@/app/types/chapter";
 import type { Example } from "@/app/types/example";
 import Navbar from "@/app/navbar";
-import LoadingScreen from "@/app/loading";
-import Head from "next/head";
+import LoadingSpinner from "@/app/loadingSpinner";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [chapter, setChapter] = useState<Chapter | undefined>(undefined);
@@ -26,9 +25,9 @@ export default function Page({ params }: { params: { slug: string } }) {
   }, [params.slug]);
 
   if (isLoading) return (
-    <div className="h-screen w-screen p-4 pb-3 pt-0">
+    <div className="h-screen w-screen p-4 pb-3 pt-0 flex flex-col">
       <Navbar />
-      <LoadingScreen />
+      <LoadingSpinner />
     </div>
   )
   if (!chapter) return <p>Something went wrong</p>;
@@ -38,7 +37,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       <Navbar />
       <div className=" flex flex-col font-pixel leading-7 justify-between grow">
         <div className="flex flex-col gap-3 border-b-gray-600 border-b-2 border-dashed grow pt-5 pb-8">
-          <span className="text-3xl font-pixel font-semibold leading-10">
+          <span className="text-3xl font-pixel font-semibold leading-10 text-gray-200">
             {chapter.title}
           </span>
           <pre className="font-pixel font-light text-xl overflow-x-auto whitespace-pre-wrap break-words text-gray-400">
@@ -97,7 +96,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 function Example(props: { example: Example }) {
   return (
     <div className="flex flex-col gap-2">
-      <span className="leading-10 font-pixel font-thin text-2xl">
+      <span className="leading-10 font-pixel font-thin text-2xl text-gray-300">
         {props.example.title}
       </span>
       {props.example.code && (
