@@ -11,6 +11,11 @@ export default function Page({ params }: { params: { slug: string } }) {
   const [chapter, setChapter] = useState<Chapter | undefined>(undefined);
   const [isLoading, setLoading] = useState(true);
 
+  const [chapterList, setChapterList] = useState<
+    Array<{ id: number; name: string }>
+  >([]);
+  const [isChapterListLoading, setChapterListLoading] = useState(true);
+  useEffect(() => { }, []);
   useEffect(() => {
     fetch(`/api/chapter/${params.slug}`)
       .then((res) => {
@@ -24,24 +29,34 @@ export default function Page({ params }: { params: { slug: string } }) {
       .catch((_) => {
         setLoading(false);
       });
+    fetch("/api/chapter-list")
+      .then((res) => {
+        if (!res.ok) throw Error("fetch error");
+        return res.json();
+      })
+      .then((res) => {
+        setChapterList(res.chapterList);
+        setChapterListLoading(false);
+      })
+      .catch((_) => {
+        setChapterListLoading(false);
+      });
   }, [params.slug]);
 
-  if (isLoading) return (
-    <div className="h-screen w-screen p-4 pb-3 pt-0 flex flex-col">
-      <Navbar />
-      <div className="h-full w-full flex flex-row">
-        <SideBar />
+  if (isLoading)
+    return (
+      <div className="h-screen w-screen p-4 pb-3 pt-0 flex flex-col">
+        <Navbar chapterList={chapterList} />
         <LoadingSpinner />
       </div>
-    </div>
-  )
+    );
   if (!chapter) return <p>Something went wrong</p>;
   return (
     <>
       <div className="min-h-screen w-full flex flex-col p-4 pt-0 pb-3">
-        <Navbar />
+        <Navbar chapterList={chapterList} />
         <div className="flex w-full grow flex-row">
-          <SideBar />
+          <SideBar chapterList={chapterList} currentChapter={params.slug} />
           <div className=" flex flex-col font-pixel leading-7 justify-between grow md:pl-4">
             <div className="flex flex-col gap-3 border-b-gray-600 border-b-2 border-dashed grow pt-5 pb-8">
               <span className="text-3xl font-pixel leading-10 text-gray-300">
@@ -60,7 +75,10 @@ export default function Page({ params }: { params: { slug: string } }) {
               <div>
                 {chapter.prevTitle !== "" && (
                   <Link
-                    href={`/chapter/${chapter.prevTitle.toLowerCase().split(" ").join("-")}`}
+                    href={`/chapter/${chapter.prevTitle
+                      .toLowerCase()
+                      .split(" ")
+                      .join("-")}`}
                     className="flex flex-row text-gray-500 hover:text-gray-300"
                   >
                     <div className="flex flex-col">
@@ -78,7 +96,10 @@ export default function Page({ params }: { params: { slug: string } }) {
               <div>
                 {chapter.nextTitle !== "" && (
                   <Link
-                    href={`/chapter/${chapter.nextTitle.toLowerCase().split(" ").join("-")}`}
+                    href={`/chapter/${chapter.nextTitle
+                      .toLowerCase()
+                      .split(" ")
+                      .join("-")}`}
                     className="flex flex-row text-gray-500 hover:text-gray-300"
                   >
                     <div className="flex flex-col">
@@ -120,4 +141,3 @@ function Example(props: { example: Example }) {
     </div>
   );
 }
-

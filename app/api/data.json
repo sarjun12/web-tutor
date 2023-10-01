@@ -101,7 +101,64 @@
         {
           "title": "Numbers",
           "description": "Represents both integer and floating-point numbers.",
-          "code": "let age = 30;\nlet price = 19.99;"
+          "code": "let age = 30;\nconsole.log(age);"
+        },
+        {
+          "title": "String",
+          "description": "• String is a sequence of letter and numbers.\n• The value of the string is called string literal.\n• String Literal are surrounded by double quotes (\").\n• To print multiple values in console log, we use comma(,)",
+          "code": "const myName = \"Mughilan\";\nconsole.log(\"Hello\", myName);"
+        },
+        {
+          "title": "Boolean",
+          "description": "Boolean value is either true or false",
+          "code": "const isAuth = false;"
+        },
+        {
+          "title": "Undefined and Null",
+          "description": "• Undefined indicates that a variable declared but hasn't been assigned a value.\n• Null represents the intentional absence of any object value.",
+          "code": "let city; // undefined\nlet emptyValue = null"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Operators",
+      "description": "Operator are symbols or keywords that perform operations on one or more operantds to produce a result.",
+      "examples": [
+        {
+          "title": "Arithmetic Operators",
+          "description": "• + Addition\n• - Subtraction\n• * Multiplication\n• / Division\n• % Modulus(divide the numbers and return the remainder)",
+          "code": "let a = 10, b = 3;\nconsole.log(a + b); // 13\nconsole.log(a - b); // 7\nconsole.log(a * b); // 30\nconsole.log(a / b); // 3.333\nconsole.log(a % b); // 1"
+        },
+        {
+          "title": "Assignment Operators",
+          "code": "let a = 10;\na += 4; // 14\na -= 3; // 11\na *= 6; // 66\na /= 11; // 6\na %= 3; // 0",
+          "description": "Assignment operator perform the operations between the left side value and right side value and assign it to the left side.\n• = Assignment\n• += Addition assignment\n• -= Subtraction assignment\n• *= Multiplication assignment\n• /= Division assignment\n• %= Modulus assignment"
+        },
+        {
+          "title": "Comparison Operators",
+          "description": "• == Equality (loose equality, type coercion)\n• === Strict equality (no type coercion)\n• != Inequality (loose inequality, type coercion)\n• !== Strict inequality (no type coercion)\n• > Greater than\n• < Less than\n• >= Greater than or equal to\n• <= Less than or equal to",
+          "code": "let x = 10, y = 6; \nlet z = \"10\"; \nconsole.log(x == z); // true \nconsole.log(x === z); // false \nconsole.log(x != z); // false \nconsole.log(x != y); // true \nconsole.log(x > y); // true \nconsole.log(x < y) // false \nconsole.log(x >= y) // true \nconsole.log(x <= y) // false"
+        },
+        {
+          "title": "Logical Operators",
+          "code": "let isTrue = true;\nlet isFalse = false;\nconsole.log(isTrue && isFalse);// false (logical AND)\nconsole.log(isTrue || isFalse); // true (logical OR)\nconsole.log(!isTrue); // false (logical NOT)",
+          "description": "• && will return true only if both are true.\n• || will return true even if only one is true.\n• ! will invert the boolean value."
+        },
+        {
+          "title": "Increment and decrement operators",
+          "description": "• ++ will increase the value by 1\n• -- will decreae the value by 1",
+          "code": "let count = 3;\ncount++ // 4\ncount-- // 3"
+        },
+        {
+          "title": "Ternary Operator",
+          "description": "It will take three operands(one condition and two value). If a condition if the condition is true then it will return the first value else it will return the second value.",
+          "code": "let mark = 44;\nlet grade = mark > 40 ? \"pass\" : \"fail\"; // pass"
+        },
+        {
+          "title": "TypeOf opeartor",
+          "description": "Returns a type of the value in string",
+          "code": "let x = 42;\nconsole.log(typeof x); // \"number\""
         }
       ]
     }
