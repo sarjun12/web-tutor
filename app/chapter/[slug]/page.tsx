@@ -4,6 +4,7 @@ import type { Chapter } from "@/app/types/chapter";
 import type { Example } from "@/app/types/example";
 import Navbar from "@/app/navbar";
 import LoadingScreen from "@/app/loading";
+import Head from "next/head";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [chapter, setChapter] = useState<Chapter | undefined>(undefined);
@@ -32,14 +33,15 @@ export default function Page({ params }: { params: { slug: string } }) {
   )
   if (!chapter) return <p>Something went wrong</p>;
   return (
+    <>
     <div className="w-screen min-h-screen flex flex-col">
       <Navbar />
-      <div className=" flex flex-col font-normal leading-7 p-8 pb-5 justify-between grow">
-        <div className="flex flex-col gap-3 border-b-gray-600 pb-8 border-b grow">
-          <span className="text-2xl font-semibold leading-10">
+      <div className=" flex flex-col font-pixel leading-7 justify-between grow">
+        <div className="flex flex-col gap-3 border-b-gray-600 p-8 border-b grow">
+          <span className="text-3xl font-pixel font-semibold leading-10">
             {chapter.title}
           </span>
-          <pre className="text-md overflow-x-auto whitespace-pre-wrap break-words text-gray-400">
+          <pre className="font-pixel font-light text-xl overflow-x-auto whitespace-pre-wrap break-words text-gray-400">
             {chapter.description}
           </pre>
           <div className="flex flex-col gap-8">
@@ -48,7 +50,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             ))}
           </div>
         </div>
-        <div className="flex flex-row justify-between pt-5">
+        <div className="flex flex-row justify-between p-3 pr-5 pl-5">
           <div>
             {chapter.prevTitle !== "" && (
               <a
@@ -56,10 +58,10 @@ export default function Page({ params }: { params: { slug: string } }) {
                 className="flex flex-row text-gray-500 hover:text-gray-300"
               >
                 <div className="flex flex-col">
-                  <span className="text-sm text-end">Previous</span>
+                  <span className="text-md text-end">Previous</span>
                   <div className="flex gap-3">
                     <span className="text-lg">{"<"}</span>
-                    <span className="text-gray-300 font-medium">
+                    <span className="text-gray-300 font-medium text-xl">
                       {chapter.prevTitle}
                     </span>
                   </div>
@@ -74,9 +76,9 @@ export default function Page({ params }: { params: { slug: string } }) {
                 className="flex flex-row text-gray-500 hover:text-gray-300"
               >
                 <div className="flex flex-col">
-                  <span className="text-sm">Next</span>
+                  <span className="text-md">Next</span>
                   <div className="flex gap-3">
-                    <span className="text-gray-300 font-medium">
+                    <span className="text-gray-300 text-xl font-medium">
                       {chapter.nextTitle}
                     </span>
                     <span className="text-lg">{">"}</span>
@@ -88,22 +90,23 @@ export default function Page({ params }: { params: { slug: string } }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
 function Example(props: { example: Example }) {
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-lg leading-10 font-semibold">
+      <span className="leading-10 font-pixel font-thin text-2xl">
         {props.example.title}
       </span>
       {props.example.code && (
-        <pre className="p-4 bg-white bg-opacity-10 rounded-sm text-md">
+        <pre className="p-4 bg-white bg-opacity-10 rounded-sm text-md font-pixel text-xl text-gray-300">
           {props.example.code}
         </pre>
       )}
       {props.example.description && (
-        <pre className="overflow-x-auto whitespace-pre-wrap break-words text-gray-400">
+        <pre className="overflow-x-auto whitespace-pre-wrap break-words text-gray-400 font-pixel text-xl">
           {props.example.description}
         </pre>
       )}

@@ -28,23 +28,21 @@ export default function Home() {
   if (isLoading) return <LoadingScreen />
   if (!chapterList) return <div>Something went wrong</div>;
   return (
-    <main className="flex min-h-screen justify-center p-8 font-normal">
+    <main className="flex min-h-screen justify-center p-8 font-pixel">
       <div className="flex flex-col gap-5">
-        <span className="font-medium text-4xl text-gray-300">Web Tutor</span>
-        <div className="flex gap-1">
-          <span className="text-gray-400 leading-7">
+        <span className="font-medium text-6xl text-gray-300">Web Tutor</span>
+          <span className="text-gray-400 text-xl leading-7">
             Web tutor covers basics of javascript with example.
+            <Link
+              href="/chapter/0"
+              className="underline underline-offset-4 leading-7 text-purple-400 hover:text-slate-400"
+            >
+              Start Here
+            </Link>
           </span>
-          <Link
-            href="/chapter/0"
-            className="underline underline-offset-4 leading-7 text-purple-400 hover:text-slate-400"
-          >
-            Start Here
-          </Link>
-        </div>
-        <div className="gap-3">
-          <span className="font-medium text-xl leading-8">Chapter List</span>
-          <div className="flex flex-col">
+        <div className="flex gap-3 flex-col">
+          <span className="font-medium text-3xl text-gray-300 leading-10">Chapter List</span>
+          <div className="flex flex-col text-xl">
             {chapterList.map((chapter) => (
               <ChapterLink
                 id={chapter.id}
