@@ -4,13 +4,15 @@ import { useState, useEffect } from "react";
 import type { Chapter } from "@/app/types/chapter";
 import type { Example } from "@/app/types/example";
 import Navbar from "@/app/navbar";
+import { stringify } from "querystring";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [chapter, setChapter] = useState<Chapter | undefined>(undefined);
   const [isLoading, setLoading] = useState(true);
+  const [id, setId] = useState(params.slug)
 
   useEffect(() => {
-    fetch(`/api/chapter?id=${params.slug}`)
+    fetch(`/api/chapter?id=${id}`)
       .then((res) => {
         if (!res.ok) throw Error("Fetch error");
         return res.json();
@@ -22,14 +24,13 @@ export default function Page({ params }: { params: { slug: string } }) {
       .catch((_) => {
         setLoading(false);
       });
-  }, [params.slug]);
+  }, [id]);
 
   if (isLoading) return <p>Loading...</p>;
   if (!chapter) return <p>Something went wrong</p>;
   return (
     <div className="w-screen min-h-screen flex flex-col">
       <Navbar />
-      {params.slug}
       <div className=" flex flex-col font-normal leading-7 p-8 pb-5 justify-between grow">
         <div className="flex flex-col gap-3 border-b-gray-600 pb-8 border-b grow">
           <span className="text-2xl font-semibold leading-10">
@@ -46,6 +47,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           <div>
             {chapter.prevTitle !== "" && (
               <Link
+                onClick={() => setId(_ => params.slug)}
                 href={`/chapter/${chapter.id - 1}`}
                 className="flex flex-row text-gray-500 hover:text-gray-300"
               >
@@ -64,6 +66,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           <div>
             {chapter.nextTitle !== "" && (
               <Link
+                onClick={() => setId(_ => params.slug)}
                 href={`/chapter/${chapter.id + 1}`}
                 className="flex flex-row text-gray-500 hover:text-gray-300"
               >
