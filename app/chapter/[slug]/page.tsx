@@ -53,7 +53,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           <div>
             {chapter.prevTitle !== "" && (
               <a
-                href={`/chapter/${chapter.id - 1}`}
+                href={`/chapter/${chapter.prevTitle.toLowerCase().split(" ").join("-")}`}
                 className="flex flex-row text-gray-500 hover:text-gray-300"
               >
                 <div className="flex flex-col">
@@ -71,7 +71,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           <div>
             {chapter.nextTitle !== "" && (
               <a
-                href={`/chapter/${chapter.id + 1}`}
+                href={`/chapter/${chapter.nextTitle.toLowerCase().split(" ").join("-")}`}
                 className="flex flex-row text-gray-500 hover:text-gray-300"
               >
                 <div className="flex flex-col">

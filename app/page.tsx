@@ -37,7 +37,7 @@ export default function Home() {
           <span className="text-gray-400 text-xl leading-7">
             Web tutor covers basics of javascript with example.
             <Link
-              href="/chapter/0"
+              href="/chapter/comments"
               className="underline underline-offset-4 leading-7 text-purple-400 hover:text-slate-400"
             >
               Start Here
@@ -64,7 +64,7 @@ function ChapterLink(props: { id: number; name: string }) {
   return (
     <Link
       className="underline underline-offset-4 leading-7 text-gray-300 hover:text-slate-400 visited:text-gray-400"
-      href={`/chapter/${props.id}`}
+      href={`/chapter/${props.name.toLowerCase().split(" ").join("-")}`}
     >
       {props.name}
     </Link>

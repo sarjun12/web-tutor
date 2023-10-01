@@ -92,6 +92,18 @@
           "code": "page-title, css-style-sheet"
         }
       ]
+    },
+    {
+      "id": 4,
+      "title": "Basic Datatypes",
+      "description": "Javascript is a dynamically-typed language, which means that variables are not bound to a specific data type at the time of declaration. The data types are associated with the values stored in varaibles.",
+      "examples": [
+        {
+          "title": "Numbers",
+          "description": "Represents both integer and floating-point numbers.",
+          "code": "let age = 30;\nlet price = 19.99;"
+        }
+      ]
     }
   ]
 }
