@@ -4,6 +4,7 @@ import type { Chapter } from "@/app/types/chapter";
 import type { Example } from "@/app/types/example";
 import Navbar from "@/app/navbar";
 import LoadingSpinner from "@/app/loadingSpinner";
+import Link from "next/link";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [chapter, setChapter] = useState<Chapter | undefined>(undefined);
@@ -52,7 +53,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         <div className="flex flex-row justify-between pt-2">
           <div>
             {chapter.prevTitle !== "" && (
-              <a
+              <Link
                 href={`/chapter/${chapter.prevTitle.toLowerCase().split(" ").join("-")}`}
                 className="flex flex-row text-gray-500 hover:text-gray-300"
               >
@@ -65,12 +66,12 @@ export default function Page({ params }: { params: { slug: string } }) {
                     </span>
                   </div>
                 </div>
-              </a>
+              </Link>
             )}
           </div>
           <div>
             {chapter.nextTitle !== "" && (
-              <a
+              <Link
                 href={`/chapter/${chapter.nextTitle.toLowerCase().split(" ").join("-")}`}
                 className="flex flex-row text-gray-500 hover:text-gray-300"
               >
@@ -83,7 +84,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                     <span className="text-lg">{">"}</span>
                   </div>
                 </div>
-              </a>
+              </Link>
             )}
           </div>
         </div>
