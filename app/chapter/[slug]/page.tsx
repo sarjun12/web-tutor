@@ -29,7 +29,10 @@ export default function Page({ params }: { params: { slug: string } }) {
   if (isLoading) return (
     <div className="h-screen w-screen p-4 pb-3 pt-0 flex flex-col">
       <Navbar />
-      <LoadingSpinner />
+      <div className="h-full w-full flex flex-row">
+        <SideBar />
+        <LoadingSpinner />
+      </div>
     </div>
   )
   if (!chapter) return <p>Something went wrong</p>;
