@@ -1,10 +1,10 @@
-import data from "../data.json";
+import data from "../../data.json";
 import type { Chapter } from "@/app/types/chapter";
 
-export async function GET(request: Request) {
+export async function GET(request: Request, {params}: {params: {slug: string}}) {
   let id = 0;
   try {
-    id = parseInt(request.url.split("?").join().split("=")[1]);
+    id = parseInt(params.slug);
   } catch {}
   let nextTitle = "",
     prevTitle = "";

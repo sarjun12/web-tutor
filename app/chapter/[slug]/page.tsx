@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import type { Chapter } from "@/app/types/chapter";
 import type { Example } from "@/app/types/example";
@@ -10,7 +9,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/api/chapter?id=${params.slug}`)
+    fetch(`/api/chapter/${params.slug}`)
       .then((res) => {
         if (!res.ok) throw Error("Fetch error");
         return res.json();
