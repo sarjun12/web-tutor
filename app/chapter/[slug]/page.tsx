@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import type { Chapter } from "@/app/types/chapter";
 import type { Example } from "@/app/types/example";
 import Navbar from "@/app/navbar";
+import LoadingScreen from "@/app/loading";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [chapter, setChapter] = useState<Chapter | undefined>(undefined);
@@ -23,7 +24,12 @@ export default function Page({ params }: { params: { slug: string } }) {
       });
   }, [params.slug]);
 
-  if (isLoading) return <p className="w-screen min-h-screen items-center">Loading...</p>;
+  if (isLoading) return (
+    <div>
+      <Navbar />
+      <LoadingScreen />
+    </div>
+  )
   if (!chapter) return <p>Something went wrong</p>;
   return (
     <div className="w-screen min-h-screen flex flex-col">
@@ -33,7 +39,9 @@ export default function Page({ params }: { params: { slug: string } }) {
           <span className="text-2xl font-semibold leading-10">
             {chapter.title}
           </span>
-          <pre className="text-md overflow-x-auto whitespace-pre-wrap break-words text-gray-400">{chapter.description}</pre>
+          <pre className="text-md overflow-x-auto whitespace-pre-wrap break-words text-gray-400">
+            {chapter.description}
+          </pre>
           <div className="flex flex-col gap-8">
             {chapter.examples.map((example, key) => (
               <Example example={example} key={key} />
@@ -89,14 +97,17 @@ function Example(props: { example: Example }) {
       <span className="text-lg leading-10 font-semibold">
         {props.example.title}
       </span>
-      {props.example.code &&
+      {props.example.code && (
         <pre className="p-4 bg-white bg-opacity-10 rounded-sm text-md">
           {props.example.code}
         </pre>
-      }
-      {props.example.description &&
-        <pre className="overflow-x-auto whitespace-pre-wrap break-words text-gray-400">{props.example.description}</pre>
-      }
+      )}
+      {props.example.description && (
+        <pre className="overflow-x-auto whitespace-pre-wrap break-words text-gray-400">
+          {props.example.description}
+        </pre>
+      )}
     </div>
   );
 }
+

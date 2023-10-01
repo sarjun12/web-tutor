@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import LoadingScreen from "./loading";
+import Navbar from "./navbar";
 
 type ChapterList = Array<{ id: number; name: string }>;
 
@@ -23,7 +25,7 @@ export default function Home() {
         setLoading(false);
       });
   }, []);
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingScreen />
   if (!chapterList) return <div>Something went wrong</div>;
   return (
     <main className="flex min-h-screen justify-center p-8 font-normal">
