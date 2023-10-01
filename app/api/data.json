@@ -1,0 +1,63 @@
+{
+  "chapters": [
+    {
+      "id": 0,
+      "title": "Comments",
+      "description": "Comments can be used to explain javascript code. comments will be ignored by the interpreter",
+      "examples": [
+        {
+          "title": "Single-Line Comments",
+          "code": "// This is a single line comments",
+          "description": "Single line comments can be written at the end of line of a code."
+        },
+        {
+          "title": "Multi-Line Comments",
+          "code": "/*\nThis is \nMultiple line\nComment \n*/",
+          "description": "• Multi-line comments used to write documentation.\n• /* is the start of the comment and */ is the end of the comment"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Variables",
+      "description": "Variables are containers for storing data.",
+      "examples": [
+        {
+          "title": "Using var",
+          "code": "var x = 10",
+          "description": "The var keyword should only be used in code written for older browsers. var keyword allows us to redelare the same variable and it will let the variable access out of the scope."
+        },
+        {
+          "title": "Using Let",
+          "code": "let y = 5",
+          "description": "Let keyword is modern replacement for var. It fixes the problems with var."
+        },
+        {
+          "title": "Using Const",
+          "code": "const pi = 3.14",
+          "description": "Const keyword is used to define a constant value that should not be allowed to change."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Identifiers",
+      "description": "JavaScript identifiers are names used to identify variables, functions, objects, or any other constructs within a JavaScript program.",
+      "examples": [
+        {
+          "title": "1. Rules for Identifiers",
+          "description": "• Identifiers must begin with a letter (a-z, A-Z), an underscore (_), or a dollar sign ($).\n• After the first character, identifiers can also contain digits (0-9).\n• Identifiers are case-sensitive, meaning 'myVariable' and 'myvariable' are considered different.",
+          "code": ""
+        },
+        {
+          "title": "2. Valid Examples",
+          "code": "let myVariable\nlet _privateVar\nlet $specialVar\nlet firstName\nlet calculateSum"
+        },
+        {
+          "title": "3. Invalid Examples",
+          "code": "let 123var // starts with a digits\nlet my-variable // contains a hyphen\nlet my variable // contains a space"
+        }
+      ]
+    }
+  ]
+}
