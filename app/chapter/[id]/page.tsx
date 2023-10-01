@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 import type { Chapter } from "@/app/types/chapter";
 import type { Example } from "@/app/types/example";
 import Navbar from "@/app/navbar";
+import { revalidateTag } from "next/cache";
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default function Page({ params }: { params: { id: string } }) {
   const [chapter, setChapter] = useState<Chapter | undefined>(undefined);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/api/chapter?id=${params.slug}`)
+    fetch(`/api/chapter?id=${params.id}`)
       .then((res) => {
         if (!res.ok) throw Error("Fetch error");
         return res.json();
@@ -22,7 +23,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       .catch((_) => {
         setLoading(false);
       });
-  }, [params.slug]);
+  }, [params.id]);
 
   if (isLoading) return <p>Loading...</p>;
   if (!chapter) return <p>Something went wrong</p>;
