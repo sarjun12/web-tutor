@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import type { Chapter } from "@/app/types/chapter";
 import type { Example } from "@/app/types/example";
@@ -7,11 +8,9 @@ import Navbar from "@/app/navbar";
 export default function Page({ params }: { params: { slug: string } }) {
   const [chapter, setChapter] = useState<Chapter | undefined>(undefined);
   const [isLoading, setLoading] = useState(true);
-  const [id, setId] = useState(params.slug)
 
   useEffect(() => {
-    console.log(id)
-    fetch(`/api/chapter?id=${id}`)
+    fetch(`/api/chapter?id=${params.slug}`)
       .then((res) => {
         if (!res.ok) throw Error("Fetch error");
         return res.json();
@@ -23,9 +22,9 @@ export default function Page({ params }: { params: { slug: string } }) {
       .catch((_) => {
         setLoading(false);
       });
-  }, [id]);
+  }, [params.slug]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p className="w-screen min-h-screen items-center">Loading...</p>;
   if (!chapter) return <p>Something went wrong</p>;
   return (
     <div className="w-screen min-h-screen flex flex-col">
@@ -45,8 +44,8 @@ export default function Page({ params }: { params: { slug: string } }) {
         <div className="flex flex-row justify-between pt-5">
           <div>
             {chapter.prevTitle !== "" && (
-              <button
-                onClick={() => { setId(_ => `${chapter.id - 1}`) }}
+              <a
+                href={`/chapter/${chapter.id - 1}`}
                 className="flex flex-row text-gray-500 hover:text-gray-300"
               >
                 <div className="flex flex-col">
@@ -58,13 +57,13 @@ export default function Page({ params }: { params: { slug: string } }) {
                     </span>
                   </div>
                 </div>
-              </button>
+              </a>
             )}
           </div>
           <div>
             {chapter.nextTitle !== "" && (
-              <button
-                onClick={() => { setId(_ => `${chapter.id + 1}`) }}
+              <a
+                href={`/chapter/${chapter.id + 1}`}
                 className="flex flex-row text-gray-500 hover:text-gray-300"
               >
                 <div className="flex flex-col">
@@ -76,7 +75,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                     <span className="text-lg">{">"}</span>
                   </div>
                 </div>
-              </button>
+              </a>
             )}
           </div>
         </div>
