@@ -1,10 +1,8 @@
 "use client";
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import type { Chapter } from "@/app/types/chapter";
 import type { Example } from "@/app/types/example";
 import Navbar from "@/app/navbar";
-import { stringify } from "querystring";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [chapter, setChapter] = useState<Chapter | undefined>(undefined);
@@ -12,6 +10,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   const [id, setId] = useState(params.slug)
 
   useEffect(() => {
+    console.log(id)
     fetch(`/api/chapter?id=${id}`)
       .then((res) => {
         if (!res.ok) throw Error("Fetch error");
@@ -46,9 +45,8 @@ export default function Page({ params }: { params: { slug: string } }) {
         <div className="flex flex-row justify-between pt-5">
           <div>
             {chapter.prevTitle !== "" && (
-              <Link
-                onClick={() => setId(_ => params.slug)}
-                href={`/chapter/${chapter.id - 1}`}
+              <button
+                onClick={() => { setId(_ => `${chapter.id - 1}`) }}
                 className="flex flex-row text-gray-500 hover:text-gray-300"
               >
                 <div className="flex flex-col">
@@ -60,14 +58,13 @@ export default function Page({ params }: { params: { slug: string } }) {
                     </span>
                   </div>
                 </div>
-              </Link>
+              </button>
             )}
           </div>
           <div>
             {chapter.nextTitle !== "" && (
-              <Link
-                onClick={() => setId(_ => params.slug)}
-                href={`/chapter/${chapter.id + 1}`}
+              <button
+                onClick={() => { setId(_ => `${chapter.id + 1}`) }}
                 className="flex flex-row text-gray-500 hover:text-gray-300"
               >
                 <div className="flex flex-col">
@@ -79,7 +76,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                     <span className="text-lg">{">"}</span>
                   </div>
                 </div>
-              </Link>
+              </button>
             )}
           </div>
         </div>
