@@ -161,6 +161,28 @@
           "code": "let x = 42;\nconsole.log(typeof x); // \"number\""
         }
       ]
+    },
+    {
+      "id": 6,
+      "title": "If statement",
+      "description": "if statement is a control structure that allows you to execute a block of code conditionally based on a specified condition.",
+      "examples": [
+        {
+          "title": "If",
+          "code": "let grade = 46;\nif (grade > 40) {\n    console.log(\"pass\")\n}",
+          "description": "Syntax:\nif (condition) {\n   //code\n}\nIf the condition is true then the code inside the curly braces { } executes.\nOtherwise the code will not get executed."
+        },
+        {
+          "title": "If else",
+          "code": "let grade = 36;\nif (grade > 40) {\n    console.log(\"pass\");\n} else {\n    console.log(\"fail\");\n}",
+          "description": "If condition is false then the code block under else will execute."
+        },
+        {
+          "title": "Else if",
+          "code": "let grade = 80;\nif (grade < 80) {\n    console.log(\"A grade\")\n} else if (grade < 60) {\n    console.log(\"B grade\")\n} else if (grade > 40) {\n    console.log(\"C grade\")\n} else {\n    console.log(\"Fail\")\n}",
+          "description": "Else if condition will execute if the previous condition is false, if all conditions are false, then the else block will be executed."
+        }
+      ]
     }
   ]
 }
