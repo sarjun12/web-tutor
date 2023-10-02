@@ -4,10 +4,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "./loadingSpinner";
 
-type ChapterList = Array<{ id: number; name: string }>;
 
 export default function Home() {
-  const [chapterList, setChapterList] = useState<ChapterList>();
+  const [chapterList, setChapterList] = useState<Array<string>>();
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -31,14 +30,14 @@ export default function Home() {
   )
   if (!chapterList) return <div>Something went wrong</div>;
   return (
-    <main className="flex min-h-screen justify-center p-8 font-pixel">
+    <main className="flex min-h-screen justify-center p-8 font-pixel selection:text-gray-100 selection:bg-gray-400 selection:bg-opacity-20">
       <div className="flex flex-col gap-5">
         <span className="font-medium text-6xl text-gray-300">Web Tutor</span>
           <span className="text-gray-400 text-xl leading-7">
             Web tutor covers basics of javascript with example.&#160;
             <Link
               href="/chapter/comments"
-              className="underline underline-offset-4 leading-7 text-purple-400 hover:text-slate-400"
+              className="underline underline-offset-4 leading-7 text-slate-600 hover:text-slate-400"
             >
               Start Here
             </Link>
@@ -46,11 +45,10 @@ export default function Home() {
         <div className="flex gap-3 flex-col">
           <span className="font-medium text-3xl text-gray-300 leading-10">Chapter List</span>
           <div className="flex flex-col text-xl">
-            {chapterList.map((chapter) => (
+            {chapterList.map((chapter, i) => (
               <ChapterLink
-                id={chapter.id}
-                name={chapter.name}
-                key={chapter.id}
+                name={chapter}
+                key={i}
               />
             ))}
           </div>
@@ -60,7 +58,7 @@ export default function Home() {
   );
 }
 
-function ChapterLink(props: { id: number; name: string }) {
+function ChapterLink(props: { name: string }) {
   return (
     <Link
       className="underline underline-offset-4 leading-7 text-gray-300 hover:text-slate-400 visited:text-gray-400"
