@@ -183,6 +183,57 @@
           "description": "Else if condition will execute if the previous condition is false, if all conditions are false, then the else block will be executed."
         }
       ]
+    },
+    {
+      "id": 7,
+      "title": "While Loop",
+      "description": "While statement executes the code until the condition is false.\n\nwhile (condition) {\n   //code\n}\n",
+      "examples": [
+        {
+          "title": "Example 1",
+          "code": "let count = 0;\nwhile (count > 7) {\n    console.log(count);\n     count++\n}",
+          "description": "First we set count to 0 then increment it every iteration and when the condition is false it will exit the loop.\nThis will print 0 to 6 because the loop will stop when count is not less than 7."
+        },
+        {
+          "title": "Example 2",
+          "code": "let count = 4\nwhile (count < 0) {\n    console.log(count);\n      count--\n}",
+          "description": "Here we set count to a larger value and then decrement the value and check if it is greater than 0.\nThis will print 4 to 1."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "For loop",
+      "description": "It is compact version of while loop.\nfor(initialization; condition; iteration) {\n   // code \n}\n `initialization` is a expression that is executed once before the loop starts. It typically initializes a loop control variable.\n`condition` that stops loop when it is false.\n`iteration` is increment the variable.",
+      "examples": [
+        {
+          "title": "Example 1",
+          "code": "for (let count = 1; count <= 4; count++) {\n    console.log(count);\n}\n",
+          "description": "Here we initialize the count to 1, after every iteration it will increment the value and check the condition.\nThis will print 1 to 4."
+        },
+        {
+          "title": "Example 2",
+          "code": "for (let count = 4; count >= 0; count++) {\n    console.log(count);\n}\n",
+          "description": "Here we initialize the count to 4, after every iteration it will decrement the value and check the condition.\nThis will print 4 to 1."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "For Each",
+      "description": "This loop will iterate over a list of elements.\nIt use `for` keyword with `of` keyword.\nfor (const i in list) {\n    console.log(i)\n}",
+      "examples": [
+        {
+          "title": "Example 1",
+          "code": "const nums = [1, 2, 3, 4, 5];\nfor (const num of nums) {\n    console.log(num)\n}",
+          "description": "We create array and printing all the number in the array."
+        },
+        {
+          "title": "Example 2",
+          "code": "const fruits = [\"Apple\", \"Banana\", \"Cherry\"];\nfor (const fruit of fruits) {\n     console.log(fruit);\n}",
+          "description": "We create array of fruits and printing all the fruit."
+        }
+      ]
     }
   ]
 }

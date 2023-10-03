@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SetStateAction, useEffect, useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 
 export default function Navbar(props: {
   chapterList: Array<string>;
@@ -32,21 +32,20 @@ export default function Navbar(props: {
     return [];
   }
   function changeSideBar() {
-    console.log("wrok")
     props.setShowSidebar((prev) => {
       const current = !prev;
       if (localStorage !== undefined) {
         if (current) localStorage.setItem("showSidebar", "show");
         else localStorage.setItem("showSidebar", "hide");
       }
-      return !prev
+      return !prev;
     });
   }
   return (
     <div className="flex w-full border-b-gray-600 text-gray-300 border-b-2 border-dashed py-3 font-normal justify-between">
       <div className="flex gap-3">
         <button
-          className="font-pixel text-3xl border-2 border-gray-400 border-dashed text-gray-400 px-2 rounded-sm"
+          className="font-pixel font-bold text-3xl border-2 border-gray-400 border-dashed text-gray-400 px-2 rounded-sm"
           onClick={() => changeSideBar()}
         >
           =
@@ -66,6 +65,17 @@ export default function Navbar(props: {
             placeholder="Search"
             onChange={(e) => setInput(e.currentTarget.value)}
             onFocus={() => setSearchResult(getFilteredData(input))}
+            onKeyDown={(e) => {
+              console.log(e.key)
+              if (e.key === "Enter") {
+                let currentChapter = searchResult ? searchResult[0] : undefined;
+                if (currentChapter !== undefined) {
+                  currentChapter = currentChapter.toLowerCase().split(" ").join("-");
+                  //Router.push(`/chapter/${currentChapter}`)
+                  location.href = `/chapter/${currentChapter}`
+                }
+              }
+            }}
           ></input>
           <span
             id="shortcut"
@@ -80,7 +90,7 @@ export default function Navbar(props: {
         >
           {searchResult &&
             searchResult.map((chapter, i) => (
-              <ChatperLink key={i} title={chapter} />
+              <ChapterLink key={i} title={chapter} />
             ))}
         </div>
       </div>
@@ -88,7 +98,7 @@ export default function Navbar(props: {
   );
 }
 
-function ChatperLink(props: { title: string }) {
+function ChapterLink(props: { title: string }) {
   return (
     <Link
       className="leading-8 bg-black w-full text-gray-100 font-pixel text-xl border border-gray-500 p-1"
