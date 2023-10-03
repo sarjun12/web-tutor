@@ -65,7 +65,7 @@ export default function Navbar(props: {
         >
           <input
             id="input"
-            className="bg-transparent w-fit placeholder-gray-400 font-pixel outline-none text-gray-200 text-xl p-1 hover:border-b-gray-200 focus:border-b-gray-200 w-32 md:w-fit"
+            className="bg-transparent w-fit placeholder-gray-400 font-pixel outline-none text-gray-200 text-xl p-1 hover:border-b-gray-200 focus:border-b-gray-200 sm:w-32"
             placeholder="Search"
             onChange={(e) => setInput(e.currentTarget.value)}
             onFocus={() => setSearchResult(getFilteredData(input))}
