@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { SetStateAction, useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Navbar(props: {
   chapterList: Array<string>;
@@ -53,6 +54,9 @@ export default function Navbar(props: {
         <Link className="text-4xl font-pixel hidden md:block" href="/">
           Web Tutor
         </Link>
+        <Link className="md:hidden" href="/">
+          <Image src="/android-chrome-512x512.png" width={40} height={40} alt="logo"></Image>
+        </Link>
       </div>
       <div className="flex flex-col">
         <div
@@ -61,7 +65,7 @@ export default function Navbar(props: {
         >
           <input
             id="input"
-            className="bg-transparent w-fit placeholder-gray-400 font-pixel outline-none text-gray-200 text-xl p-1 hover:border-b-gray-200 focus:border-b-gray-200"
+            className="bg-transparent w-fit placeholder-gray-400 font-pixel outline-none text-gray-200 text-xl p-1 hover:border-b-gray-200 focus:border-b-gray-200 w-32 md:w-fit"
             placeholder="Search"
             onChange={(e) => setInput(e.currentTarget.value)}
             onFocus={() => setSearchResult(getFilteredData(input))}
