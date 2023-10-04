@@ -82,7 +82,7 @@ export default function Navbar(props: {
           ></input>
           <span
             id="shortcut"
-            className="border border-gray-400 px-2 font-pixel text-xl rounded-sm hidden md:block"
+            className="border border-gray-400 px-2 font-pixel text-xl rounded-sm hidden md:block m-2"
           >
             /
           </span>
