@@ -1,12 +1,7 @@
 "use client";
 
 import { ChangeEvent, SetStateAction, useState } from "react";
-
-type Example = {
-  title: string;
-  code: string;
-  description: string;
-};
+import type { Example } from "../types/example";
 
 type Chapter = {
   title: string;
@@ -32,7 +27,21 @@ export default function Editor() {
     e.preventDefault();
     setExamples((prev) => [...prev, { title: "", description: "", code: "" }]);
   }
-  console.log(examples);
+  function save(e: any) {
+    e.preventDefault();
+    const chapter: Chapter = {
+      title: title,
+      description: description,
+      examples: examples,
+    };
+    fetch("/api/editor", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ chapter: chapter }),
+    });
+  }
   return (
     <div className="min-h-screen w-screen p-10 text-gray-300">
       <span className="font-pixel text-3xl">Editor</span>
@@ -62,6 +71,9 @@ export default function Editor() {
         </div>
         <button onClick={addExample} className="bg-gray-400 bg-opacity-10 p-3">
           Add Example or Sub Topics
+        </button>
+        <button onClick={save} className="bg-gray-200 text-gray-800 p-3">
+          SAVE
         </button>
       </form>
     </div>
@@ -103,14 +115,14 @@ function ExampleElement(props: {
     );
   }
   function deleteHandler() {
-    props.setExamples((examples) => 
+    props.setExamples((examples) =>
       examples.filter((_, id) => {
         if (id === props.id) {
-          return false
+          return false;
         }
-        return true
-      })
-    )
+        return true;
+      }),
+    );
   }
   return (
     <div className="w-full flex flex-col text-xl gap-3 bg-gray-600 bg-opacity-5 p-4 rounded-sm border-2 border-dashed border-gray-700 text-gray-300">
