@@ -58,14 +58,13 @@ export default function Navbar(props: {
           <Image src="/android-chrome-512x512.png" width={40} height={40} alt="logo"></Image>
         </Link>
       </div>
-      <div className="flex flex-col">
         <div
-          className="border-b-2 border-b-gray-400 "
+          className="border-b-2 border-b-gray-300 flex w-32 md:w-fit"
           //onBlur={() => setSearchResult([])}
         >
           <input
             id="input"
-            className="bg-transparent w-fit placeholder-gray-400 font-pixel outline-none text-gray-200 text-xl p-1 hover:border-b-gray-200 focus:border-b-gray-200 sm:w-32"
+            className="bg-transparent placeholder-gray-400 font-pixel outline-none text-gray-200 text-xl p-1 hover:border-b-gray-200 focus:border-b-gray-200 w-32"
             placeholder="Search"
             onChange={(e) => setInput(e.currentTarget.value)}
             onFocus={() => setSearchResult(getFilteredData(input))}
@@ -83,11 +82,10 @@ export default function Navbar(props: {
           ></input>
           <span
             id="shortcut"
-            className="border border-gray-400 px-2 font-pixel text-xl rounded-sm"
+            className="border border-gray-400 px-2 font-pixel text-xl rounded-sm hidden md:block"
           >
             /
           </span>
-        </div>
         <div
           id="result-element"
           className="absolute top-12 flex flex-col w-fit"
